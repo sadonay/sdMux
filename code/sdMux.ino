@@ -495,7 +495,7 @@ void loop() {
     if (ahora - ultimoVigia >= 100) {
       ultimoVigia = ahora;
       if (camaraEncendida()) liberar("camara encendida");
-      else if (ahora - ultimaActividad > SESION_TIMEOUT_MS) liberar("inactividad");
+      else if ((uint32_t)(millis() - ultimaActividad) > SESION_TIMEOUT_MS) liberar("inactividad");
     }
   } else if (AUTO_ESCANEO_MS > 0 && (ultimoCheck == 0 || ahora - ultimoCheck >= AUTO_ESCANEO_MS)) {
     ultimoCheck = ahora;
